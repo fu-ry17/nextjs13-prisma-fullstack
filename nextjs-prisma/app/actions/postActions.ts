@@ -78,6 +78,7 @@ export const getPosts = async(searchParams: any) => {
 }
 
 export const getPost = async(id: string) => {
+    if(!id) return
     try {
         const post = await prisma.post.findFirst({ where: { id }})
         if(!post){
@@ -97,6 +98,7 @@ export const deletePost = async(id: string) => {
         if(!id) return
         const post = await prisma.post.delete({where: { id }})
         revalidatePath("/")
+        revalidatePath(`/${id}`)
         return post
 
     } catch (error) {
