@@ -3,12 +3,15 @@ import { deletePost } from '@/app/actions/postActions';
 import { experimental_useOptimistic as useOptimistic } from 'react';
 import { Post } from '@prisma/client';
 import PostCard from './PostCard';
+import useCustomRouter from '@/app/hooks/useCustomRouter';
 
 const PostList = ({ posts }: { posts: Post[] }) => {
     const [optimisticPosts, addOptimisticPosts] = useOptimistic(
         { posts },
         (state, newPost: Post[]) => ({ ...state, posts: newPost }),
     );
+
+    const { pushQuery } = useCustomRouter()
     
     const handleDelete = async (id: string) => {
         const newPosts = posts.filter(p => p.id !== id)

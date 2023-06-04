@@ -65,14 +65,16 @@ export const getPosts = async(searchParams: any) => {
             where: { title: { contains: search }}
         })
 
-        const lastCursor = posts[posts.length -1].id
+        const newData = posts.map(p => ({
+             ...p, id: p.id.toString()
+        }))
 
         const totalPages = Math.ceil(count / limit)
 
-        return { posts, totalPages, lastCursor }
+        return { posts: newData, totalPages }
     } catch (error) {
         if(error instanceof Error){
-            throw new Error(error.message || "Failed to create a post")
+            throw new Error(error.message)
         }
     }
 }

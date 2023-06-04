@@ -1,4 +1,5 @@
 "use client"
+import useCustomRouter from '@/app/hooks/useCustomRouter'
 import { postStore } from '@/app/store/postStore'
 import { Post } from '@prisma/client'
 import Link from 'next/link'
