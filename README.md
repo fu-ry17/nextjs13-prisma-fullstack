@@ -1,6 +1,6 @@
 ## Getting Started
 
-A nextjs fullstack application + authentication
+A nextjs13 fullstack application + authentication
 
 Features
 - Pagination
