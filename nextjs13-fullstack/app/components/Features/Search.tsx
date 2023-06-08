@@ -9,7 +9,7 @@ const Search = () => {
 
   const handleSearch = (formData: FormData) => {
       const search = formData.get('search') as string
-      pushQuery({ search, page: 1 })
+      pushQuery({ search: search.toLowerCase(), page: 1 })
   }
 
   return (
